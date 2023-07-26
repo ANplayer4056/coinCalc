@@ -1,0 +1,12 @@
+{
+  "name": "Coin Calc",
+  "short_name": "Coin Calc",
+  "description": "%% calculator",
+  "icons": [
+    {
+      "src": "./assets/image/bitcoin.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ]
+}
