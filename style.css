@@ -1,0 +1,63 @@
+.calc {
+    flex-direction: column;
+    padding: 10px;
+    /* width: 300px; */
+}
+
+.group {
+    margin: 10px;
+    width: 100%;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 6px;
+}
+
+.titile {
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hr-dash {
+    width: 100%;
+    margin: 15px 0;
+    border-top: 3px dotted gray;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.my-10 {
+    margin: 10px 0;
+}
+
+.total {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.win {
+    color: dodgerblue;
+}
+
+.lose {
+    color: crimson;
+}

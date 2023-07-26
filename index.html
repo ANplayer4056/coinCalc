@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>%% calculator</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="shortcut icon" href="./image/btc.ico" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="flex-center">
+        <div class="calc flex-center">
+            <div class="titile flex-center">
+                <img class="icon" src="./image/bitcoin.png" alt="">
+                <span> %% calc</span>
+            </div>
+            <el-row :gutter="10">
+                <el-col :md="12">
+                    <el-input v-model="wallet">
+                        <template slot="prepend">全倉</template>
+                    </el-input>
+                </el-col>
+                <el-col :md="12">
+                    <el-input v-model="multi">
+                        <template slot="append">X</template>
+                    </el-input>
+                </el-col>
+                <el-col :md="24" class="my-10">
+                    <el-input v-model="percentage">
+                        <template slot="prepend">止損</template>
+                        <template slot="append">%</template>
+                    </el-input>
+                </el-col>
+            </el-row>
+            <div class="hr-dash"></div>
+            <el-row :gutter="10" class="w-full">
+                <el-col>
+                    <el-input v-model="price">
+                        <template slot="prepend">開倉點位</template>
+                    </el-input>
+                </el-col>
+            </el-row>
+            <el-row :gutter="10"  class="group">
+                <el-col :md="12">
+                    <el-input v-model="endWin">
+                        <template slot="prepend">止贏</template>
+                    </el-input>
+                </el-col>
+                <el-col :md="12">
+                    <el-input v-model="endLose">
+                        <template slot="prepend">止損</template>
+                    </el-input>
+                </el-col>
+            </el-row>
+            <el-card class="box-card w-full">
+                <div class="group">
+                    <i class="el-icon-coin"></i>
+                    <span>持倉顆數 : {{ hasCoin }}</span>
+                </div>
+                <div class="group">
+                    <i class="el-icon-coin"></i>
+                    <span>保證金 : {{ promiseCash }}</span>
+                </div>
+                <div class="total">
+                    <div class="win">
+                        盈 : {{ win }}
+                    </div> 
+                    <div style="margin: 0 6px;"> / </div>
+                    <div class="lose">
+                        損 : -{{ lose }}
+                    </div>
+                </div>
+            </el-card>
+            <div class="group flex-center">
+                <el-button type="success" class="group" icon="el-icon-refresh-left" @click="clear">清除</el-button>
+                <el-button type="primary" class="group" icon="el-icon-cpu" @click="calc" >試算</el-button>
+            </div>
+        </div>
+    
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                wallet: 0,
+                multi: 20,
+                percentage: 2,
+                price: 0,
+                endWin: 0,
+                endLose: 0,
+                hasCoin: 0,
+                promiseCash: 0,
+                win: 0,
+                lose: 0
+            },
+            methods: {
+                clear() {
+                    this.wallet = 0
+                    this.multi = 20
+                    this.percentage = 2
+                    this.price = 0
+                    this.endWin = 0
+                    this.endLose = 0
+                    this.hasCoin = 0
+                    this.promiseCash = 0
+                    this.win = 0
+                    this.lose = 0
+                },
+                calc() {
+                    this.lose = this.wallet * (this.percentage/100)
+                    this.hasCoin = this.lose / Math.abs(this.price - this.endLose)
+                    this.win = this.hasCoin * Math.abs(this.endWin - this.endLose)
+                    this.promiseCash = (this.hasCoin * this.price) / this.multi
+                }
+            }
+        })
+    </script>
+</body>
+</html>
