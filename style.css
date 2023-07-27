@@ -16,7 +16,7 @@
 }
 
 .titile {
-    width: 60%;
+    width: 300px;
     margin-bottom: 20px;
 }
 
@@ -44,6 +44,10 @@
 
 .my-10 {
     margin: 10px 0;
+}
+
+.my-20 {
+    margin: 20px 0;
 }
 
 .total {
