@@ -113,7 +113,7 @@
                     this.lose = this.wallet * (this.percentage/100)
                     this.hasCoin = this.lose / Math.abs(this.price - this.endLose)
                     this.promiseCash = (this.hasCoin * this.price) / this.multi
-                    this.win = Math.abs(this.endWin - this.price) / this.promiseCash
+                    this.win = this.hasCoin * Math.abs(this.endWin - this.price)
                 }
             }
         })
