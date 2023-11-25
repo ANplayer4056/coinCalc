@@ -65,9 +65,17 @@
     color: crimson;
 }
 
-.tool-button-group {
+.buttonGroup {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin: 10px 0;
+    padding: 10px 0;
+}
+
+.flexBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
 }

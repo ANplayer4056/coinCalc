@@ -18,28 +18,31 @@
             </div>
             <el-row :gutter="10">
                 <el-col :md="12">
-                    <el-input v-model="wallet" type="number">
-                        <template slot="prepend">全倉</template>
-                    </el-input>
-                    <div class="tool-button-group">
-                        <el-button type="primary" size="small" @click="reset">0</el-button>
-                        <el-button type="primary" size="small" plain @click="add(100)">+ 100</el-button>
-                        <el-button type="primary" size="small" plain @click="add(500)">+ 500</el-button>
-                        <el-button type="primary" size="small" plain @click="add(1000)">+ 1,000</el-button>
+                    <div class="flexBlock">
+                        <el-input v-model="wallet" type="number">
+                            <template slot="prepend">全倉</template>
+                        </el-input>
+                        <div class="buttonGroup">
+                            <el-button type="primary" size="mini" @click="reset">0</el-button>
+                            <el-button type="primary" size="mini" plain @click="add(100)">+ 100</el-button>
+                            <el-button type="primary" size="mini" plain @click="add(500)">+ 500</el-button>
+                            <el-button type="primary" size="mini" plain @click="add(1000)">+ 1,000</el-button>
+                        </div>
                     </div>
                 </el-col>
                 <el-col :md="12">
-                    <el-input v-model="multi" type="number">
-                        <template slot="prepend">槓桿</template>
-                        <template slot="append">X</template>
-                    </el-input>
-                    <div class="tool-button-group">
-                        <el-button type="warning" size="small" plain @click="setMulti(10)">10 X</el-button>
-                        <el-button type="warning" size="small" plain @click="setMulti(20)">20 X</el-button>
-                        <el-button type="warning" size="small" plain @click="setMulti(25)">25 X</el-button>
-                        <el-button type="warning" size="small" plain @click="setMulti(50)">50 X</el-button>
-                        <el-button type="warning" size="small" plain @click="setMulti(75)">75 X</el-button>
-                        <el-button type="warning" size="small" plain @click="setMulti(100)">100 X</el-button>
+                    <div class="flexBlock">
+                        <el-input v-model="multi" type="number">
+                            <template slot="prepend">槓桿</template>
+                            <template slot="append">X</template>
+                        </el-input>
+                        <div class="buttonGroup">
+                            <el-button type="warning" size="mini" plain @click="setMulti(10)">10 X</el-button>
+                            <el-button type="warning" size="mini" plain @click="setMulti(20)">20 X</el-button>
+                            <el-button type="warning" size="mini" plain @click="setMulti(50)">50 X</el-button>
+                            <el-button type="warning" size="mini" plain @click="setMulti(75)">75 X</el-button>
+                            <el-button type="warning" size="mini" plain @click="setMulti(100)">100 X</el-button>
+                        </div>
                     </div>
                 </el-col>
                 <el-col :md="24" class="my-10">
