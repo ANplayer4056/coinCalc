@@ -61,14 +61,18 @@
                 </el-col>
             </el-row>
             <el-row :gutter="10"  class="group">
-                <el-col :md="12">
+                <el-col span="12">
                     <el-input v-model="endWin" type="number">
-                        <template slot="prepend">止贏</template>
+                        <template slot="prepend">
+                            <span class="win font-bold">止贏</span>
+                        </template>
                     </el-input>
                 </el-col>
-                <el-col :md="12">
+                <el-col span="12">
                     <el-input v-model="endLose" type="number">
-                        <template slot="prepend">止損</template>
+                        <template slot="prepend">
+                            <span class="lose font-bold">止損</span>
+                        </template>
                     </el-input>
                 </el-col>
             </el-row>
