@@ -18,17 +18,32 @@
             </div>
             <el-row :gutter="10">
                 <el-col :md="12">
-                    <el-input v-model="wallet">
+                    <el-input v-model="wallet" type="number">
                         <template slot="prepend">全倉</template>
                     </el-input>
+                    <div class="tool-button-group">
+                        <el-button type="primary" size="small" @click="reset">0</el-button>
+                        <el-button type="primary" size="small" plain @click="add(100)">+ 100</el-button>
+                        <el-button type="primary" size="small" plain @click="add(500)">+ 500</el-button>
+                        <el-button type="primary" size="small" plain @click="add(1000)">+ 1,000</el-button>
+                    </div>
                 </el-col>
                 <el-col :md="12">
-                    <el-input v-model="multi">
+                    <el-input v-model="multi" type="number">
+                        <template slot="prepend">槓桿</template>
                         <template slot="append">X</template>
                     </el-input>
+                    <div class="tool-button-group">
+                        <el-button type="warning" size="small" plain @click="setMulti(10)">10 X</el-button>
+                        <el-button type="warning" size="small" plain @click="setMulti(20)">20 X</el-button>
+                        <el-button type="warning" size="small" plain @click="setMulti(25)">25 X</el-button>
+                        <el-button type="warning" size="small" plain @click="setMulti(50)">50 X</el-button>
+                        <el-button type="warning" size="small" plain @click="setMulti(75)">75 X</el-button>
+                        <el-button type="warning" size="small" plain @click="setMulti(100)">100 X</el-button>
+                    </div>
                 </el-col>
                 <el-col :md="24" class="my-10">
-                    <el-input v-model="percentage">
+                    <el-input v-model="percentage" type="number">
                         <template slot="prepend">止損</template>
                         <template slot="append">%</template>
                     </el-input>
@@ -37,19 +52,19 @@
             <div class="hr-dash"></div>
             <el-row :gutter="10" class="w-full">
                 <el-col>
-                    <el-input v-model="price">
+                    <el-input v-model="price" type="number">
                         <template slot="prepend">開倉點位</template>
                     </el-input>
                 </el-col>
             </el-row>
             <el-row :gutter="10"  class="group">
                 <el-col :md="12">
-                    <el-input v-model="endWin">
+                    <el-input v-model="endWin" type="number">
                         <template slot="prepend">止贏</template>
                     </el-input>
                 </el-col>
                 <el-col :md="12">
-                    <el-input v-model="endLose">
+                    <el-input v-model="endLose" type="number">
                         <template slot="prepend">止損</template>
                     </el-input>
                 </el-col>
@@ -85,7 +100,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                wallet: 0,
+                wallet: 100,
                 multi: 20,
                 percentage: 2,
                 price: 0,
@@ -98,7 +113,7 @@
             },
             methods: {
                 clear() {
-                    this.wallet = 0
+                    this.wallet = 100
                     this.multi = 20
                     this.percentage = 2
                     this.price = 0
@@ -114,6 +129,15 @@
                     this.hasCoin = this.lose / Math.abs(this.price - this.endLose)
                     this.promiseCash = (this.hasCoin * this.price) / this.multi
                     this.win = this.hasCoin * Math.abs(this.endWin - this.price)
+                },
+                add(val) {
+                    this.wallet += val
+                },
+                reset() {
+                    this.wallet = 0
+                },
+                setMulti(val) {
+                    this.multi = val
                 }
             }
         })
